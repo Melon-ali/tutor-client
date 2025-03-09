@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
-import image from "../../assets/sitelogo/Screenshot_2025-03-01_232319-removebg-preview.png";
+import image from "../../assets/logo/logo-2.png";
 
 const Logo = () => {
     return (
         <div>
-            <Image src={image || "/placeholder-image.png"} width={180} height={100} alt="Site Logo" />
+            <Image src={image || "/placeholder-image.png"} width={140} height={80} alt="Site Logo" />
         </div>
     );
 };

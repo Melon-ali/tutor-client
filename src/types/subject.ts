@@ -1,4 +1,4 @@
-export type TSubject = {
+export interface ISubject {
     _id: string;
     userId: string;
     name: string;

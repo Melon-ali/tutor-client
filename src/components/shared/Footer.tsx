@@ -1,77 +1,99 @@
-import React from "react";
-import Link from 'next/link';
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import logo from "@/assets/logo/logo-2.png";
+import Image from "next/image";
 
-const Footer = () => {
-  return <footer className="bg-gray-900 text-white py-10">
-  <div className="container mx-auto px-5">
-    {/* Newsletter Section */}
-    <div className="bg-black p-8 rounded-lg text-center mb-10">
-      <h3 className="text-lg font-semibold">▶▶ GET STARTED</h3>
-      <h2 className="text-3xl font-bold mt-2">Don not miss a thing - News & offers</h2>
-      <p className="mt-2">Sign up for a trial lesson and experience our high-quality English courses firsthand.</p>
-      <button className="mt-4 bg-green-500 text-white py-2 px-6 rounded-full">SIGN UP</button>
-    </div>
+export default function Footer() {
+  return (
+    <footer className="w-full border-t bg-white dark:bg-gray-950">
+      <div className="w-[80%] mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          {/* Brand Section */}
+          <div className="space-y-2">
+            <div className="">
+              <Image src={logo} alt="MediMart Logo" width={200} height={200} />
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+            Silent sir say desire fat him letter. Whatever settling goodness too and honoured she building.
+            </p>
+            <div className="flex space-x-3">
+              <Button variant="ghost" size="icon" className="text-[#F16001]" asChild>
+                <Link href="#" target="_blank">
+                  <FaFacebook className="h-5 w-5" />
+                  <span className="sr-only">Facebook</span>
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" className="text-[#F16001]" asChild>
+                <Link href="#" target="_blank">
+                  <FaInstagram className="h-5 w-5" />
+                  <span className="sr-only">Instagram</span>
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" className="text-[#F16001]" asChild>
+                <Link href="#" target="_blank">
+                  <FaTwitter className="h-5 w-5" />
+                  <span className="sr-only">Twitter</span>
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" className="text-[#F16001]" asChild>
+                <Link href="#" target="_blank">
+                  <FaLinkedin className="h-5 w-5" />
+                  <span className="sr-only">Twitter</span>
+                </Link>
+              </Button>
+            </div>
+          </div>
 
-    {/* Footer Links */}
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-      <div>
-        <h3 className="text-lg font-bold">Lessons</h3>
-        <ul>
-          <li><Link href="#">1-on-1 Lessons</Link></li>
-          <li><Link href="#">Group Class</Link></li>
-          <li><Link href="#">Practice for free</Link></li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-lg font-bold">Teaching</h3>
-        <ul>
-          <li><Link href="#">Become a teacher</Link></li>
-          <li><Link href="#">Teaching Code of Conduct</Link></li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-lg font-bold">Learning Resources</h3>
-        <ul>
-          <li><Link href="#">Language Test</Link></li>
-          <li><Link href="#">Language Challenge</Link></li>
-          <li><Link href="#">Podcasts</Link></li>
-          <li><Link href="#">Quiz</Link></li>
-          <li><Link href="#">Community</Link></li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-lg font-bold">Promotions</h3>
-        <ul>
-          <li><Link href="#">Refer a Friend</Link></li>
-          <li><Link href="#">Buy a Gift Card</Link></li>
-          <li><Link href="#">Affiliate Program</Link></li>
-          <li><Link href="#">Partnership Program</Link></li>
-        </ul>
-      </div>
-    </div>
+          {/* Latest Courses */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 dark:text-gray-100">Latest Courses</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/shop" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"> Development</Link>
+              <Link href="/prescriptions" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Design</Link>
+              <Link href="/orders" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Marketing</Link>
+              <Link href="/about" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">IT & Software</Link>
+              <Link href="/about" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Photography</Link>
+            </div>
+          </div>
 
-    {/* Contact Info */}
-    <div className="flex flex-col md:flex-row md:justify-between items-center border-t border-gray-700 pt-5">
-      <div className="text-center md:text-left mb-4 md:mb-0">
-        <h2 className="text-2xl font-bold">Inlingo</h2>
-        <p className="text-gray-400 mt-2">Montes quisque urna molestie tincidunt aliquet quam.</p>
-        <p className="text-gray-400">info@inlingo.com | 021-3456-789</p>
-      </div>
-      <div className="flex space-x-4">
-        <FaFacebookF className="text-xl cursor-pointer" />
-        <FaTwitter className="text-xl cursor-pointer" />
-        <FaInstagram className="text-xl cursor-pointer" />
-        <FaYoutube className="text-xl cursor-pointer" />
-      </div>
-    </div>
+          {/* Our Pages */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 dark:text-gray-100">Our Pages</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/shop" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">About</Link>
+              <Link href="/prescriptions" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Courses</Link>
+              <Link href="/orders" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Gallery</Link>
+              <Link href="/about" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Career</Link>
+              <Link href="/about" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Contact</Link>
+            </div>
+          </div>
 
-    {/* Bottom Links */}
-    <div className="text-center text-gray-500 mt-6 text-sm">
-      © 2025 - Inlingo. Design by ThemeWarrior | <Link href="#">About</Link> | <Link href="#">Careers</Link> | <Link href="#">Support</Link> | <Link href="#">Privacy</Link> | <Link href="#">Contact</Link>
-    </div>
-  </div>
-</footer>;
-};
+          {/* Social Links */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 dark:text-gray-100">Valuable Links</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/shop" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"> Pricingt</Link>
+              <Link href="/prescriptions" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Privacy</Link>
+              <Link href="/orders" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Conditions</Link>
+              <Link href="/about" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm">Refund Policy</Link>
+              <Link href="/about" className="text-gray-600 hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"> Our Product</Link>
+            </div>
+          </div>
+        </div>
 
-export default Footer;
+        <div className="mt-8 border-t dark:border-gray-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              © {new Date().getFullYear()} Copyright All Review <span className="text-[#F16001]">Edu</span>Skills.
+            </p>
+            <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
+              <Link href="/privacy" className="hover:text-[#F16001]">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#F16001]">Terms of Service</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

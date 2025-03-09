@@ -7,11 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getProfileInfoById, updateProfile } from "@/services/Profile";
-import { TProfile } from "@/types";
+import { IProfile } from "@/types";
 
 const ProfileDetails = () => {
   const { id } = useParams();
-  const [profile, setProfile] = useState<TProfile | null>(null);
+  const [profile, setProfile] = useState<IProfile | null>(null);
   const [applyForTutor, setApplyForTutor] = useState(false);
 
   const { register, handleSubmit, setValue } = useForm({
@@ -48,7 +48,7 @@ const ProfileDetails = () => {
 
   // Handle form submission
   const onSubmit: SubmitHandler<FieldValues> = async (formData) => {
-    const formattedData: Partial<TProfile> = {};
+    const formattedData: Partial<IProfile> = {};
 
     const imageFile = formData.image[0]; // Extract file from FileList
     if (imageFile) {
@@ -84,7 +84,7 @@ const ProfileDetails = () => {
     if (applyForTutor) {
       formattedData.subjects = formData.subjects
         .split(",")
-        .map((s: any) => s.trim());
+        .map((s: string) => s.trim());
       formattedData.bio = formData.bio;
       formattedData.experience = Number(formData.experience);
       formattedData.rates = { hourlyRate: Number(formData.hourlyRate) };

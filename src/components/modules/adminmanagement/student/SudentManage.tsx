@@ -10,20 +10,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { updateProfile } from "@/services/Profile";
-import { TProfile } from "@/types";
+import { updateProfileByRole } from "@/services/Profile";
+import { IProfile } from "@/types";
 import { toast } from "sonner";
+import NMContainer from "@/components/ui/core/NMContainer";
 
 interface StudentManageProps {
-  ProfileData: TProfile[];
+  ProfileData: IProfile[];
 }
 
 const StudentManage: React.FC<StudentManageProps> = ({ ProfileData }) => {
+  
   const handleRoleChange = async (id: string, role: string) => {
-    const updatedData: Partial<TProfile> = { role };
-
     try {
-      const res = await updateProfile(id, updatedData);
+      const res = await updateProfileByRole(id, role);
       if (res.success) {
         toast.success(res.message);
       } else {
@@ -34,29 +34,70 @@ const StudentManage: React.FC<StudentManageProps> = ({ ProfileData }) => {
     }
   };
 
-  const columns: ColumnDef<TProfile>[] = [
+  const columns: ColumnDef<IProfile>[] = [
     {
-      accessorKey: "_id",
-      header: "ID",
-      cell: ({ row }) => <span>{row.original._id}</span>,
+      accessorKey: "User Nmae",
+      header: "User Name",
+      cell: ({ row }) => <span>{row.original.userId?.name || "N/A"}</span>,
     },
     {
-      accessorKey: "userId",
-      header: "User ID",
-      cell: ({ row }) => <span>{row.original.userId}</span>,
+      accessorKey: "User Email",
+      header: "User Email",
+      cell: ({ row }) => <span>{row.original.userId?.email || "N/A"}</span>,
     },
     {
-      accessorKey: "Role",
-      header: " Role",
-      cell: ({ row }) => <span>{row.original.role}</span>,
+      accessorKey: "User Role",
+      header: "User Role",
+      cell: ({ row }) => <span className="bg-sky-500 flex justify-center text-xs text-white font-semibold p-2 rounded-xl">{row.original?.userId?.role || "N/A"}</span>,
     },
     {
       accessorKey: "role",
-      header: "Role",
+      header: "Profile Role",
+      cell: ({ row }) => (
+        <span className="bg-[#1dd1a1] flex justify-center text-xs text-black font-semibold p-2 rounded-xl">
+          {row.original.role || "N/A"}
+        </span>
+      ),
+    },
+    {
+      accessorKey: "requestRole",
+      header: "Requested Role",
+      cell: ({ row }) => (
+        <div>
+          {row.original.requestRole ? (
+            <span className="bg-blue-500 flex justify-center text-xs text-white font-semibold p-2 rounded-xl text-center">
+              {row.original.requestRole || "N/A"}
+            </span>
+          ) : (
+            <h1 className="bg-red-400 text-xs text-white font-semibold p-2 rounded-xl text-center">
+              Not Requested
+            </h1>
+          )}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "experience",
+      header: "Experience (Years)",
+      cell: ({ row }) => <span>{row.original.experience || "N/A"}</span>,
+    },
+    {
+      accessorKey: "ratings",
+      header: "Ratings",
+      cell: ({ row }) => <span>{row.original.ratings }</span>,
+    },
+    {
+      accessorKey: "isVerified",
+      header: "Verified",
+      cell: ({ row }) => <span>{row.original.isVerified ? "Yes" : "No"}</span>,
+    },
+    {
+      accessorKey: "roleSelection",
+      header: "Change Role",
       cell: ({ row }) => (
         <Select
-          defaultValue={row.original.role}
-          onValueChange={(value) => handleRoleChange(row.original._id, value)}
+          defaultValue={row.original.role || "N/A"}
+          onValueChange={(value) => handleRoleChange(row.original?._id, value)}
         >
           <SelectTrigger>
             <SelectValue placeholder="Select role" />
@@ -69,51 +110,14 @@ const StudentManage: React.FC<StudentManageProps> = ({ ProfileData }) => {
         </Select>
       ),
     },
-    {
-      accessorKey: "requestRole",
-      header: "Requested Role",
-      cell: ({ row }) => <span>{row.original.requestRole}</span>,
-    },
-    {
-      accessorKey: "ratings",
-      header: "Ratings",
-      cell: ({ row }) => <span>{row.original.ratings}</span>,
-    },
-    {
-      accessorKey: "isVerified",
-      header: "Verified",
-      cell: ({ row }) => <span>{row.original.isVerified ? "Yes" : "No"}</span>,
-    },
-    {
-      accessorKey: "experience",
-      header: "Experience (Years)",
-      cell: ({ row }) => <span>{row.original.experience}</span>,
-    },
-    {
-      accessorKey: "bio",
-      header: "Bio",
-      cell: ({ row }) => <span>{row.original.bio}</span>,
-    },
-    // {
-    //   accessorKey: "createdAt",
-    //   header: "Created At",
-    //   cell: ({ row }) => (
-    //     <span>{new Date(row.original.createdAt).toLocaleString()}</span>
-    //   ),
-    // },
-    // {
-    //   accessorKey: "updatedAt",
-    //   header: "Updated At",
-    //   cell: ({ row }) => (
-    //     <span>{new Date(row.original.updatedAt).toLocaleString()}</span>
-    //   ),
-    // },
   ];
 
   return (
     <div>
-      <h1 className="text-xl font-bold">Manage Users</h1>
-      <NMTable columns={columns} data={ProfileData || []} />
+      <NMContainer>
+        <h1 className="text-xl font-bold">Manage Users</h1>
+        <NMTable columns={columns} data={ProfileData} />
+      </NMContainer>
     </div>
   );
 };

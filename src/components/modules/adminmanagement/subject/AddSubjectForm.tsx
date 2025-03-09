@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import NMImageUploader from "@/components/ui/core/NMImageUploader";
 import ImagePreviewer from "@/components/ui/core/NMImageUploader/ImagePreviewer";
@@ -71,15 +71,15 @@ const AddSubjectForm = () => {
     ]);
   };
 
-  const removeDateTimeField = (id: number) => {
-    setDateTimes(dateTimes.filter((dt) => dt.id !== id));
-  };
+  // const removeDateTimeField = (id: number) => {
+  //   setDateTimes(dateTimes.filter((dt) => dt.id !== id));
+  // };
 
   // const updateDateTime = (id: number, value: string) => {
   //   setDateTimes(dateTimes.map((dt) => (dt.id === id ? { ...dt, value } : dt)));
   // };
 
-  const onSubmit: SubmitHandler<any> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const modifiedData = {
       ...data,
       hourly: parseFloat(data.price),
@@ -99,9 +99,10 @@ const AddSubjectForm = () => {
 
     try {
       const res = await createSubject(formData);
+
       if (res.success) {
         toast.success(res.message);
-        router.push("/dashboard/subjects");
+        router.push("/dashboard/tutor/subjectList");
       } else {
         toast.error(res.message);
       }
@@ -137,9 +138,9 @@ const AddSubjectForm = () => {
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price ($)</FormLabel>
+                  <FormLabel>Hourly Charge ($)</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Enter price" />
+                    <Input {...field} placeholder="Enter Hourly charge" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -156,7 +157,10 @@ const AddSubjectForm = () => {
                 <FormItem>
                   <FormLabel>Grade Level</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="e.g., Grade 10, High School" />
+                    <Input
+                      {...field}
+                      placeholder="e.g., Grade 10, High School"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -172,7 +176,10 @@ const AddSubjectForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select Subject Category" />
@@ -195,12 +202,12 @@ const AddSubjectForm = () => {
           {/* Dynamic Date & Time Fields */}
           <div className="mt-6">
             <p className="text-lg font-semibold">Date & Time Slots</p>
-            {dateTimes.map((dt, index) => (
-              <div key={dt.id} className="flex gap-4 mt-2 items-center">
-                {/* <DateTimePicker
-                  value={dt.value}
-                  onChange={(value: string) => updateDateTime(dt.id, value)}
-                /> */}
+            {/* {dateTimes.map((dt, index) => (
+              <div key={dt.id} className=" gap-4 mt-2 items-center">
+                <DateTimePicker
+                  value={dt.value }
+                  onChange={(value) => updateDateTime(dt.id, value)}
+                />
                 {index > 0 && (
                   <Button
                     variant="destructive"
@@ -211,7 +218,7 @@ const AddSubjectForm = () => {
                   </Button>
                 )}
               </div>
-            ))}
+            ))} */}
             <Button type="button" className="mt-4" onClick={addDateTimeField}>
               + Add Another Slot
             </Button>

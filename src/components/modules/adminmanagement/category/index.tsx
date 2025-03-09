@@ -25,31 +25,34 @@ const ManageCategory = ({ category }: { category: ICategory[] }) => {
   const handleDeleteConfirm = async () => {
     try {
       if (selectedId) {
-        const res = await deleteCategory(selectedId);
+        const res: { success: boolean; message?: string } =
+          await deleteCategory(selectedId);
         if (res.success) {
-          toast.success(res.message);
+          toast.success(res.message || "Category deleted successfully!");
           setModalOpen(false);
         } else {
-          toast.error(res.message);
+          toast.error(res.message || "Failed to delete category");
         }
       }
-    } catch (err: any) {
-      console.error(err?.message);
+    } catch (err) {
+      console.error(err);
+      toast.error("An error occurred while deleting the category.");
     }
   };
 
   const columns: ColumnDef<ICategory>[] = [
     {
+      id: "category_name",
       accessorKey: "name",
       header: () => <div>Category Name</div>,
       cell: ({ row }) => (
         <div className="flex items-center space-x-3">
-          <span className="truncate">{row.original.name}</span>
+          <span className="truncate">{row.original.name || "N/A"}</span>
         </div>
       ),
     },
-
     {
+      id: "action",
       accessorKey: "action",
       header: () => <div>Action</div>,
       cell: ({ row }) => (
@@ -73,7 +76,6 @@ const ManageCategory = ({ category }: { category: ICategory[] }) => {
         </div>
       </div>
       <NMTable columns={columns} data={category || []} />
-      {/* <TablePagination totalPage={meta?.totalPage} /> */}
 
       <DeleteConfirmationModal
         name={selectedItem}

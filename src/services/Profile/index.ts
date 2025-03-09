@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { revalidateTag } from "next/cache";
@@ -13,10 +14,6 @@ export const getProfileInfo = async () => {
         Authorization: (await cookies()).get("accessToken")?.value || "",
       },
     });
-
-    if (!res.ok) {
-      throw new Error(`Error fetching profile: ${res.statusText}`);
-    }
 
     const data = await res.json();
     return data;
@@ -37,20 +34,26 @@ export const getAllUserProfileInfo = async () => {
   return data;
 };
 
+export const getAllTutorProfileInfo = async () => {
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/profile/tutor`, {
+    next: {
+      tags: ["Profile"],
+    },
+  })
+
+  const data = await res.json();
+  return data;
+};
+
 export const getProfileInfoById = async (id: string) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/profile/${id}`, {
       next: {
         tags: ["Profile"],
       },
-      // headers: {
-      //   Authorization: (await cookies()).get("accessToken")?.value || "",
-      // },
     });
 
-    if (!res.ok) {
-      throw new Error(`Error fetching profile: ${res.statusText}`);
-    }
 
     const data = await res.json();
     return data;
@@ -74,9 +77,27 @@ export const updateProfile = async (id: string, data: any) => {
       }
     );
 
-    if (!res.ok) {
-      throw new Error(`Error updating profile: ${res.statusText}`);
-    }
+    revalidateTag("Profile");
+    return await res.json();
+  } catch (error) {
+    console.error("Error updating profile:", error);
+  }
+};
+
+
+export const updateProfileByRole = async (id: string, data: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/profile/${id}/role`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: (await cookies()).get("accessToken")?.value || "",
+        },
+        body: JSON.stringify({ role: data }),
+      }
+    );
 
     revalidateTag("Profile");
     return await res.json();

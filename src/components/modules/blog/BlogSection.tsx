@@ -1,9 +1,9 @@
 "use client";
 
-// import { useGetBlogsQuery } from "@/redux/api/Blog/blogApi";
-// import { IBlog } from "@/types";
-// import React from "react";
-// import BlogCard from "./BlogCard";
+import { useGetBlogsQuery } from "@/redux/api/Blog/blogApi";
+import { IBlog } from "@/types";
+import React from "react";
+import BlogCard from "./BlogCard";
 
 const BlogSection = () => {
   const { data, error, isLoading } = useGetBlogsQuery();

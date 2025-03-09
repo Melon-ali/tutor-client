@@ -1,0 +1,8 @@
+.banner {
+    background: url("../../../../src/assets/banner/pexels-keira-burton-6147046.jpg");
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  

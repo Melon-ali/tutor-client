@@ -1,33 +1,35 @@
-export type TReview = {
+import { IUser } from "./userType";
+
+export interface IReview {
   studentId: string; 
   comment: string;
   rating: number;
   createdAt?: string; 
 }
 
-export type TAvailability = {
+export interface IAvailability {
   day: string;
   startTime: string;
   endTime: string;
 }
 
-export type TRates = {
+export interface IRates {
   hourlyRate: number;
   discount?: number;
 }
 
-export type TProfile = {
+export interface IProfile{
   _id: string;
-  userId: string; 
+  userId: IUser; 
   image?: string;
   bio?: string;
   subjects: string[];
   role: string; 
   experience?: number;
-  rates: TRates;
-  availability: TAvailability[];
+  rates: IRates;
+  availability: IAvailability[];
   ratings?: number;
-  reviews: TReview[];
+  reviews: IReview[];
   requestRole?: string; 
   isVerified?: boolean;
   callToAction?: string;

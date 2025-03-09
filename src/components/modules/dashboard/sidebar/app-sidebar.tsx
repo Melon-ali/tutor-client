@@ -25,6 +25,7 @@ import {
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
 import Link from "next/link";
+import Logo from "@/components/shared/Logo";
 
 const data = {
   navMain: [
@@ -52,13 +53,13 @@ const data = {
       icon: Shield,
       items: [
         {
-          title: "Manage student",
+          title: "Manage student and tutor",
           url: "/dashboard/admin/studentlist",
         },
-        {
-          title: "Manage Tutor",
-          url: "/dashboard/admin/tutorlist",
-        },
+        // {
+        //   title: "Manage Tutor",
+        //   url: "/dashboard/admin/tutorlist",
+        // },
         {
           title: "Manage Category",
           url: "/dashboard/admin/managecategory",
@@ -81,6 +82,14 @@ const data = {
         {
           title: "create subject",
           url: "/dashboard/tutor/createsubject",
+        },
+        {
+          title: "subject list",
+          url: "/dashboard/tutor/subjectList",
+        },
+        {
+          title: "create blog",
+          url: "/dashboard/tutor/createBlog",
         },
       ],
     },
@@ -124,9 +133,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/">
-                <div className="flex items-center justify-center">Logo</div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <h2 className="font-bold text-xl">NextMart</h2>
+                <div className="grid bg-gray-500 rounded-2xl py-4 flex-1 text-left text-sm leading-tight">
+                  <Logo />
                 </div>
               </Link>
             </SidebarMenuButton>

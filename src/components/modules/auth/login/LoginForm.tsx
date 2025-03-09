@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -15,9 +17,9 @@ import { Label } from "@/components/ui/label";
 import { useUser } from "@/context/UserContext";
 import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/shared/PrimaryButton";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const LoginForm = ({
   className,
@@ -29,10 +31,17 @@ const LoginForm = ({
     formState: { isSubmitting },
   } = useForm();
   const { setIsLoading } = useUser();
-
-  // const searchParams = useSearchParams();
-  // const redirect = searchParams.get("redirectPath");
   const router = useRouter();
+
+  // Fix: Use useState and useEffect instead of useSearchParams()
+  const [redirectPath, setRedirectPath] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      setRedirectPath(searchParams.get("redirectPath"));
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -40,15 +49,11 @@ const LoginForm = ({
       setIsLoading(true);
       if (res?.success) {
         toast.success(res?.message);
-        router.push("/");
-        // if (redirect) {
-        //   router.push(redirect);
-        // } else {
-        // }
+        router.push(redirectPath || "/profile");
       } else {
         toast.error(res?.message);
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
     }
   };
@@ -62,19 +67,36 @@ const LoginForm = ({
             Login with your Apple or Google account
           </CardDescription>
         </CardHeader>
+
+        {/* Social Logins */}
+        <div className="flex flex-col gap-4 px-10">
+          <Button
+            onClick={() =>
+              signIn("github", {
+                callbackUrl: "http://localhost:3000/dashboard",
+              })
+            }
+            variant="outline"
+            className="w-full"
+          >
+            Login with Github
+          </Button>
+          <Button
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/dashboard",
+              })
+            }
+            variant="outline"
+            className="w-full"
+          >
+            Login with Google
+          </Button>
+        </div>
+
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-6">
-              {/* Social Logins */}
-              <div className="flex flex-col gap-4">
-                <Button variant="outline" className="w-full">
-                  Login with Apple
-                </Button>
-                <Button variant="outline" className="w-full">
-                  Login with Google
-                </Button>
-              </div>
-
               {/* Divider */}
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
                 <span className="relative z-10 bg-background px-2 text-muted-foreground">
@@ -89,7 +111,6 @@ const LoginForm = ({
                   id="email"
                   type="email"
                   placeholder="m@example.com"
-                  required
                   {...register("email")}
                 />
               </div>
@@ -108,7 +129,6 @@ const LoginForm = ({
                 <Input
                   id="password"
                   type="password"
-                  required
                   {...register("password")}
                 />
               </div>
@@ -135,8 +155,8 @@ const LoginForm = ({
         By clicking continue, you agree to our{" "}
         <a href="#" className="underline hover:text-primary">
           Terms of Service
-        </a>
-        and
+        </a>{" "}
+        and{" "}
         <a href="#" className="underline hover:text-primary">
           Privacy Policy
         </a>
