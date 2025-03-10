@@ -14,13 +14,11 @@ const HeroSection = () => {
             alt="Banner Image"
             layout="fill"
             objectFit="cover"
-            // className="brightness-90"
           />
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div> */}
         </div>
 
         {/* Content */}
-        <div className="text-center px-6 md:px-8 lg:px-12  mt-30">
+        <div className="text-center px-6 md:px-8 lg:px-12 mt-30">
           <div className="p-6 rounded-lg lg:w-6xl">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold">
               Transforming Lives Through Education.

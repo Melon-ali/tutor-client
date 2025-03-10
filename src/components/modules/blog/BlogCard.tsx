@@ -5,7 +5,7 @@ import React from "react";
 const BlogCard = ({ blog }: { blog: IBlog }) => {
   return (
     <article className="rounded-lg border border-gray-100 bg-white p-4 shadow-xs transition hover:shadow-lg sm:p-6">
-      <span className="inline-block rounded-sm bg-[#1dd1a1] p-2 text-white">
+      <span className="inline-block rounded-sm bg-[#001B61] p-2 text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="size-6"
@@ -27,25 +27,25 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
       </span>
 
       <Link href={`/blogs/${blog._id}`}>
-        <h3 className="mt-0.5 text-lg font-medium text-gray-900">
+        <h3 className="mt-0.5 text-lg font-medium text-[#001B61]">
           {blog.title}
         </h3>
       </Link>
 
-      <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+      <p className="mt-2 line-clamp-3 text-sm/relaxed text-[#001B61]">
         {blog.content.slice(0, 100)}...
       </p>
 
-      <div className="flex items-center gap-2 text-gray-500 text-sm mt-4">
+      <div className="flex items-center gap-2 text-[#001B61] text-sm mt-4">
         <span>By {blog.author?.name}</span> •
         <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
       </div>
 
       <Link
         href={`/blogs/${blog._id}`}
-        className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1dd1a1]"
+        className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#F16001]"
       >
-        Find out more
+        Find Out More
         <span
           aria-hidden="true"
           className="block transition-all group-hover:ms-0.5 rtl:rotate-180"

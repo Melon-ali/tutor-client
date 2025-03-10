@@ -4,7 +4,7 @@ import SecondaryButton from '@/components/shared/SecondaryButton'
 
 const FreeOffer = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8 my-10">
+    <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 ">
         <div className="flex justify-center">
           <Image
@@ -27,7 +27,7 @@ const FreeOffer = () => {
             tolerably.
           </p>
           <SecondaryButton className="mt-4 py-6 px-6">
-            Start Now
+            Search Tutor
           </SecondaryButton>
         </div>
       </div>

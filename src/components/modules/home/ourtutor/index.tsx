@@ -4,16 +4,13 @@ import Link from "next/link";
 
 const TutorSection = ({ data }: { data: IProfile[] }) => {
   return (
-    <div className="py-12 mt-16 px-6 md:px-12 lg:px-24">
+    <div className="py-12 px-6 md:px-12 lg:px-24">
       {/* Header Section */}
-      <div className="text-center mb-12 max-w-2xl mx-auto">
-        <h1 className="text-[#1dd1a1] uppercase font-semibold">
-          --- Tutor ---
-        </h1>
-        <h2 className="text-4xl font-semibold my-4 font-mono uppercase">
-          Our Tutors
+      <div className="text-center max-w-2xl mx-auto text-[#001B61]">
+        <h2 className="text-4xl font-semibold my-4 font-mono">
+        <span className="font-bold">Tutors</span> Joined Recently
         </h2>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm">
           Our team of experienced and certified instructors is committed to
           helping you achieve fluency and confidence in English.
         </p>
@@ -38,14 +35,14 @@ const TutorSection = ({ data }: { data: IProfile[] }) => {
 
             {/* Tutor Info */}
             <div className="p-4 sm:p-6">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-[#001B61]">
                 {tutor.userId.name || "Untitled"}
               </h3>
-              <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+              <p className="mt-2 line-clamp-3 text-sm/relaxed text-[#001B61]">
                 {tutor.userId.email || "No description available."}
               </p>
-              <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1dd1a1] group">
-                Find out more
+              <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#F16001] group">
+                Find Out More
                 <span
                   aria-hidden="true"
                   className="block transition-all group-hover:ms-0.5"

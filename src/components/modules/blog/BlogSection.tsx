@@ -13,14 +13,12 @@ const BlogSection = () => {
   console.log("blog", blogs);
   return (
     <div className="bg-gray-50 py-16">
-      <div className="text-center mb-12 max-w-2xl mx-auto">
-        <h1 className="text-[#1dd1a1] uppercase font-semibold">
-          --- blogs ---
-        </h1>
-        <h2 className="text-4xl font-semibold my-4 font-mono uppercase">
-          Our Blogs
+      <div className="text-center mb-12 max-w-2xl mx-auto text-[#001B61]">
+        
+        <h2 className="text-4xl font-semibold my-4 font-mono">
+        <span className="font-bold">Check Out Our</span> Latest Blog
         </h2>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm">
           Our team of experienced and certified instructors is committed to
           helping you achieve fluency and confidence in English.
         </p>
