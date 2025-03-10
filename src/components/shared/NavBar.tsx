@@ -16,7 +16,6 @@ import { logout } from "@/services/AuthService";
 import Logo from "./Logo";
 import { getProfileInfo } from "@/services/Profile";
 import PrimaryButton from "./PrimaryButton";
-import SecondaryButton from "./SecondaryButton";
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,19 +54,19 @@ const NavBar = () => {
         <nav className="hidden md:flex items-center gap-6 text-sm ">
           <Link
             href="/"
-            className="hover:text-[#F16001] text-black font-semibold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-semibold transition duration-300"
           >
             Home
           </Link>
           <Link
             href="/about"
-            className="hover:text-[#F16001] text-black font-semibold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-semibold transition duration-300"
           >
             About
           </Link>
           <Link
             href="/course"
-            className="hover:text-[#F16001] text-black font-semibold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-semibold transition duration-300"
           >
             Courses
           </Link>
@@ -75,14 +74,14 @@ const NavBar = () => {
         
           <Link
             href="/blogs"
-            className="hover:text-[#F16001] text-black font-semibold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-semibold transition duration-300"
           >
             Blogs
           </Link>
 
           <Link
             href="/contact"
-            className="hover:text-[#F16001] text-black font-semibold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-semibold transition duration-300"
           >
             Contact
           </Link>
@@ -126,14 +125,11 @@ const NavBar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <div className="flex gap-4 px-4">
-            <Link href="register">
-              <PrimaryButton>Sign-up</PrimaryButton>
-            </Link>
+            
+            
             <Link href="login">
-              <SecondaryButton>Sign-in</SecondaryButton>
+              <PrimaryButton>Sign In</PrimaryButton>
             </Link>
-          </div>
           )}
 
           {/* Mobile Menu Button */}
@@ -149,29 +145,29 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black shadow-md absolute top-16 left-0 w-full flex flex-col py-4 px-6 gap-4">
+        <div className="md:hidden bg-white shadow-md absolute top-16 left-0 w-full flex flex-col py-4 px-6 gap-4">
           <Link
             href="/"
-            className="hover:text-[#1dd1a1] text-white font-bold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-bold transition duration-300"
           >
             Home
           </Link>
           <Link
             href="/about"
-            className="hover:text-[#1dd1a1] text-white font-bold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-bold transition duration-300"
           >
             About
           </Link>
           <Link
             href="/contact"
-            className="hover:text-[#1dd1a1] text-white font-bold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-bold transition duration-300"
           >
             contact
           </Link>
 
           <Link
             href="/course"
-            className="hover:text-[#1dd1a1] text-white font-bold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-bold transition duration-300"
           >
             course
           </Link>
@@ -180,7 +176,7 @@ const NavBar = () => {
          
           <Link
             href="/blogs"
-            className="hover:text-[#1dd1a1] text-white font-bold transition duration-300"
+            className="hover:text-[#F16001] text-[#001B61] font-bold transition duration-300"
           >
             Blog
           </Link>
