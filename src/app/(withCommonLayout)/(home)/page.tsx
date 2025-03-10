@@ -7,6 +7,7 @@ import { getAllTutorProfileInfo } from "@/services/Profile";
 import { getAllSubject } from "@/services/Subject";
 import React from "react";
 import BlogSection from "@/components/modules/blog/BlogSection";
+import WSection from "@/components/modules/home/WSection/WSection";
 
 const HomePage = async () => {
   const {data} = await getAllSubject();  
@@ -15,6 +16,7 @@ const HomePage = async () => {
   return (
     <div>
       <HeroSection />
+      <WSection />
       <Offers />
       <CoursesSection data={data} />
       <TutorSection data={tutorData?.data} />
