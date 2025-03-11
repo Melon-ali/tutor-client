@@ -1,8 +1,7 @@
-import Banner from "@/components/shared/banner";
-import PrimaryButton from "@/components/shared/PrimaryButton";
-import Image from "next/image";
+import Banner from '@/components/shared/banner'
+import PrimaryButton from '@/components/shared/PrimaryButton'
+import Image from 'next/image'
 import logo from '../../../../assets/logo/logo-2.png'
-import Link from "next/link";
 
 export default function ContactPage() {
   return (
@@ -14,12 +13,11 @@ export default function ContactPage() {
         <section className="grid lg:grid-cols-2 gap-8 items-center mb-16">
           <div>
             <h3 className="text-4xl font-bold text-[#001B61] mb-4">
-            Contact Info
+              Contact Info
             </h3>
             <p className="text-[#001B61] leading-relaxed mb-6">
-            Welcome to our Website.
-            We are glad to have you around.Your email address will not be published.
-            Required fields are marked.
+              Welcome to our Website. We are glad to have you around.Your email
+              address will not be published. Required fields are marked.
             </p>
             <div className="flex items-center gap-4 mb-4">
               <Image
@@ -39,7 +37,7 @@ export default function ContactPage() {
 
           <div>
             <h3 className="text-xl font-semibold text-[#001B61] mb-4">
-            Send a Message
+              Send a Message
             </h3>
             <form className="bg-white shadow-md rounded-lg p-6 space-y-4">
               <input
@@ -68,5 +66,5 @@ export default function ContactPage() {
         </section>
       </main>
     </div>
-  );
+  )
 }

@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -19,7 +17,6 @@ import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
 import PrimaryButton from "@/components/shared/PrimaryButton";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 const LoginForm = ({
   className,
@@ -59,53 +56,22 @@ const LoginForm = ({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-6 ", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
-          <CardDescription>
-            Login with your Apple or Google account
-          </CardDescription>
+          <CardTitle className="text-xl text-[#001B61]">Welcome back</CardTitle>
+          
         </CardHeader>
 
-        {/* Social Logins */}
-        <div className="flex flex-col gap-4 px-10">
-          <Button
-            onClick={() =>
-              signIn("github", {
-                callbackUrl: "http://localhost:3000/dashboard",
-              })
-            }
-            variant="outline"
-            className="w-full"
-          >
-            Login with Github
-          </Button>
-          <Button
-            onClick={() =>
-              signIn("google", {
-                callbackUrl: "http://localhost:3000/dashboard",
-              })
-            }
-            variant="outline"
-            className="w-full"
-          >
-            Login with Google
-          </Button>
-        </div>
+        
 
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-6">
-              {/* Divider */}
-              <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-                <span className="relative z-10 bg-background px-2 text-muted-foreground">
-                  Or continue with
-                </span>
-              </div>
+              
 
               {/* Email Input */}
-              <div className="grid gap-2">
+              <div className="grid gap-2 text-[#001B61]">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -116,7 +82,7 @@ const LoginForm = ({
               </div>
 
               {/* Password Input */}
-              <div className="grid gap-2">
+              <div className="grid gap-2 text-[#001B61]">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                   <a
@@ -139,7 +105,7 @@ const LoginForm = ({
               </PrimaryButton>
 
               {/* Sign Up Link */}
-              <div className="text-center text-sm">
+              <div className="text-center text-sm text-[#001B61]">
                 Don&apos;t have an account?{" "}
                 <Link href="/register" className="underline underline-offset-4">
                   Sign up
