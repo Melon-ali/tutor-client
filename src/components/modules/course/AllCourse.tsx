@@ -1,6 +1,5 @@
-import { ISubject } from "@/types";
-import CourseItem from "../home/ourcourse/CourseItem";
-
+import { ISubject } from '@/types'
+import CourseItem from '../home/course/CourseItem'
 
 const AllSubject = ({ subject }: { subject: ISubject[] }) => {
   return (
@@ -17,7 +16,7 @@ const AllSubject = ({ subject }: { subject: ISubject[] }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AllSubject;
+export default AllSubject
