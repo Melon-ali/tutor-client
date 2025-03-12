@@ -1,26 +1,47 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { Trash } from "lucide-react";
-import { IBooking } from "@/types/booking";
-import Image from "next/image";
-import PaymentDetails from "./payment";
-import { deleteBooking } from "@/services/Booking";
-import { toast } from "sonner";
+import { Button } from '@/components/ui/button'
+import { Trash } from 'lucide-react'
+import { IBooking } from '@/types/booking'
+import Image from 'next/image'
+// import PaymentDetails from "./payment";
+import { createOrder, deleteBooking } from '@/services/Booking'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
+import PrimaryButton from '@/components/shared/PrimaryButton'
 
 const BookingCard = ({ booking }: { booking: IBooking }) => {
-  const handleDelete = async () => {
-    const result = await deleteBooking(booking._id);
-    if (result?.success) {
-      toast.success("Booking deleted successfully!");
-    } else {
-      toast.error("Failed to delete booking.");
-    }
+  const router = useRouter()
 
-  };
+  const handleDelete = async () => {
+    const result = await deleteBooking(booking._id)
+    if (result?.success) {
+      toast.success('Booking deleted successfully!')
+    } else {
+      toast.error('Failed to delete booking.')
+    }
+  }
+
+  const handleBooking = async () => {
+    const orderLoading = toast.loading('Order is being placed')
+    try {
+      const res = await createOrder('')
+
+      if (res.success) {
+        toast.success(res.message, { id: orderLoading })
+        router.push(res.data.paymentUrl)
+      }
+
+      if (!res.success) {
+        toast.error(res.message, { id: orderLoading })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
-    <div className="p-4 border rounded-lg shadow-md bg-white dark:bg-gray-800">
+    <div className="p-4 border rounded-lg shadow-md bg-white">
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
         {/* Image Section */}
         <Image
@@ -46,9 +67,9 @@ const BookingCard = ({ booking }: { booking: IBooking }) => {
           <p className="text-sm text-gray-500">Price: ${booking.price}</p>
           <p
             className={`text-sm font-medium mt-1 ${
-              booking.status === "completed"
-                ? "text-green-600"
-                : "text-yellow-600"
+              booking.status === 'completed'
+                ? 'text-green-600'
+                : 'text-yellow-600'
             }`}
           >
             Status: {booking.status}
@@ -57,9 +78,14 @@ const BookingCard = ({ booking }: { booking: IBooking }) => {
 
         {/* Payment Details Section */}
 
-        {booking.status === "completed" ? (
-          <div className="w-full md:w-auto">
-            <PaymentDetails />
+        {booking.status === 'completed' ? (
+          <div className="">
+            <PrimaryButton
+              handler={handleBooking}
+              className="font-semibold py-5"
+            >
+              Please Payment
+            </PrimaryButton>
           </div>
         ) : null}
       </div>
@@ -76,7 +102,7 @@ const BookingCard = ({ booking }: { booking: IBooking }) => {
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BookingCard;
+export default BookingCard

@@ -25,7 +25,7 @@ export default function Footer() {
                 className="text-[#F16001]"
                 asChild
               >
-                <Link href="#" target="_blank">
+                <Link href="#">
                   <FaFacebook className="h-5 w-5" />
                   <span className="sr-only">Facebook</span>
                 </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
                 className="text-[#F16001]"
                 asChild
               >
-                <Link href="#" target="_blank">
+                <Link href="#">
                   <FaInstagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
                 </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
                 className="text-[#F16001]"
                 asChild
               >
-                <Link href="#" target="_blank">
+                <Link href="#">
                   <FaTwitter className="h-5 w-5" />
                   <span className="sr-only">Twitter</span>
                 </Link>
@@ -58,7 +58,7 @@ export default function Footer() {
                 className="text-[#F16001]"
                 asChild
               >
-                <Link href="#" target="_blank">
+                <Link href="#">
                   <FaLinkedin className="h-5 w-5" />
                   <span className="sr-only">Twitter</span>
                 </Link>
@@ -71,32 +71,32 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Latest Courses</h3>
             <div className="flex flex-col gap-2">
               <Link
-                href="/shop"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 {' '}
                 Development
               </Link>
               <Link
-                href="/prescriptions"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Design
               </Link>
               <Link
-                href="/orders"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Marketing
               </Link>
               <Link
-                href="/about"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 IT & Software
               </Link>
               <Link
-                href="/about"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Photography
@@ -111,31 +111,31 @@ export default function Footer() {
             </h3>
             <div className="flex flex-col gap-2">
               <Link
-                href="/shop"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 About
               </Link>
               <Link
-                href="/prescriptions"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Courses
               </Link>
               <Link
-                href="/orders"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Gallery
               </Link>
               <Link
-                href="/about"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Career
               </Link>
               <Link
-                href="/about"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Contact
@@ -148,32 +148,32 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Valuable Links</h3>
             <div className="flex flex-col gap-2">
               <Link
-                href="/shop"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 {' '}
                 Pricingt
               </Link>
               <Link
-                href="/prescriptions"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Privacy
               </Link>
               <Link
-                href="/orders"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Conditions
               </Link>
               <Link
-                href="/about"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 Refund Policy
               </Link>
               <Link
-                href="/about"
+                href="/"
                 className=" hover:text-[#F16001] dark:text-gray-400 dark:hover:text-[#F16001] text-sm"
               >
                 {' '}
@@ -190,10 +190,10 @@ export default function Footer() {
               <span className="text-[#F16001]">Edu</span>Skills.
             </p>
             <div className="flex gap-4 text-sm">
-              <Link href="/privacy" className="hover:text-[#F16001]">
+              <Link href="/" className="hover:text-[#F16001]">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-[#F16001]">
+              <Link href="/" className="hover:text-[#F16001]">
                 Terms of Service
               </Link>
             </div>

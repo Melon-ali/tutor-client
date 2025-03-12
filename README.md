@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 Tutor-client – Find & Connect with the Best Tutors  
 
-## Getting Started
+🚀 **Tutor-client** is a platform where students can discover qualified tutors, book sessions, and manage their learning journey.  
 
-First, run the development server:
+Live : 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+https://tutor-client-7d0obqjlt-melonalis-projects.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Features  
+### 🔹 **Students**  
+- 🏫 **Find Tutors:** Search by subject, grade, or name.  
+- 📅 **Book Sessions:** View tutor availability and schedule lessons.  
+- ⭐ **Ratings & Reviews:** Share your learning experience.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔹 **Tutors**  
+- 👨‍🏫 **Create a Profile:** List subjects, qualifications, and experience.  
+- 🕒 **Manage Availability:** Accept and manage bookings.  
+- 💰 **Track Earnings:** View completed sessions and payments.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔹 **Admin**  
+- 👨‍🏫 **Manage student and tutor:** List student and tutor management.  
+- 🕒 **Manage Category:** Accept and manage bookings.  
+- 💰 **Manage Subject** View Subjects and Manage.  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Tech Stack  
+### **Frontend:**  
+- ⚡ **Next.js 15** – SEO-friendly & optimized for performance  
+- 🎨 **TypeScript + Tailwind CSS** – Modern, responsive UI  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **Backend:**  
+- 🔧 **Node.js + Express.js** – Scalable REST API  
+- 🗄️ **MongoDB + Mongoose** – NoSQL database  
+- 🔐 **JWT + bcrypt** – Secure authentication  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **Payment Integration:**  
+- 💳 **SSLCommerz / Stripe / PayPal** 
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+## 🔧 Installation  
+```bash
+# Clone the repository
+git clone https://github.com/Melon-ali/tutor-client
+cd tutor-client
+
+# Install dependencies
+npm install
+
+# Run the frontend
+npm run dev
+
+```
+
+---

@@ -1,8 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import BlogApi from "../api/Blog/blogApi";
-// import userReducer from "./slices/userSlice";
-// import userApi from "./api/userApi";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +9,6 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(BlogApi.middleware),
-//   devTools: process.env.NODE_ENV !== "production",
 });
 
 setupListeners(store.dispatch);
