@@ -47,8 +47,8 @@ const BookingCard = ({ booking }: { booking: IBooking }) => {
         <Image
           width={200}
           height={200}
-          src={booking.subjectId?.image}
-          alt={booking.subjectId?.name}
+          src={booking.subjectId?.image || '/fallback-image.jpg'} // Use a fallback image
+          alt={booking.subjectId?.name || 'No Image Available'}
           className="w-full md:w-24 md:h-24 object-cover rounded-md"
         />
 

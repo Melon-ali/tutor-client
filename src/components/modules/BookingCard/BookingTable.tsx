@@ -49,11 +49,10 @@ const BookingTable = ({ bookingData }: { bookingData: IBooking[] }) => {
       accessorKey: "subjectId.image",
       header: "Image",
       cell: ({ row }) => {
-        console.log("row.original", row.original);
-        
+        const subjectImage = row.original.subjectId?.image || "/placeholder.jpg"; // Ensure safe access
         return (
           <Image
-            src={row.original.subjectId.image || "/placeholder.jpg"} // Provide a fallback image
+            src={subjectImage}
             height={50}
             width={50}
             alt="subject"
